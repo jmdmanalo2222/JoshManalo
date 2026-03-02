@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JMD — Josh Manalo Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f9f7;
+      --bg2: #ffffff;
+      --text: #111111;
+      --text2: #555555;
+      --accent: #111111;
+      --accent2: #444444;
+      --border: #e5e5e5;
+      --card: #ffffff;
+      --card-border: #e8e8e8;
+      --nav-bg: rgba(249,249,247,0.92);
+      --btn-bg: #111111;
+      --btn-text: #ffffff;
+      --tag-bg: #f0f0ee;
+      --tag-text: #333333;
+      --font-main: 'Inter', sans-serif;
+      --font-head: 'Inter', sans-serif;
+      --radius: 12px;
+      --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    [data-theme="tech"] {
+      --bg: #060a14;
+      --bg2: #0d1526;
+      --text: #e8f0ff;
+      --text2: #7a92b8;
+      --accent: #4f8eff;
+      --accent2: #00d4ff;
+      --border: #1a2a45;
+      --card: #0d1526;
+      --card-border: #1e3055;
+      --nav-bg: rgba(6,10,20,0.92);
+      --btn-bg: #4f8eff;
+      --btn-text: #ffffff;
+      --tag-bg: #101d35;
+      --tag-text: #4f8eff;
+      --font-main: 'Space Grotesk', sans-serif;
+      --font-head: 'Space Grotesk', sans-serif;
+      --radius: 6px;
+    }
+
+    [data-theme="creative"] {
+      --bg: #fdf6ee;
+      --bg2: #fff8f2;
+      --text: #1a0a00;
+      --text2: #7a5c44;
+      --accent: #e85d2f;
+      --accent2: #f5a623;
+      --border: #f0d9c8;
+      --card: #ffffff;
+      --card-border: #f0d9c8;
+      --nav-bg: rgba(253,246,238,0.92);
+      --btn-bg: #e85d2f;
+      --btn-text: #ffffff;
+      --tag-bg: #fde8dc;
+      --tag-text: #e85d2f;
+      --font-main: 'Inter', sans-serif;
+      --font-head: 'Playfair Display', serif;
+      --radius: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      transition: color var(--transition);
+      text-decoration: none;
+    }
+    [data-theme="tech"] .nav-logo { color: var(--accent); text-shadow: 0 0 20px rgba(79,142,255,0.4); }
+
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+
+    .theme-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .theme-btn {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text2);
+      letter-spacing: 0.02em;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      font-family: var(--font-main);
+    }
+    .theme-btn:hover { color: var(--text); }
+    .theme-btn.active {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    [data-theme="tech"] .theme-btn.active { box-shadow: 0 0 12px rgba(79,142,255,0.4); }
+
+    .nav-cta {
+      margin-left: 16px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: var(--radius);
+      padding: 9px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font-main);
+      text-decoration: none;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 40px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-content { max-width: 720px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 28px;
+      transition: all var(--transition);
+    }
+
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 24px;
+      transition: color var(--transition), font-family var(--transition);
+    }
+    .hero h1 span { color: var(--accent); }
+    [data-theme="creative"] .hero h1 {
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 60%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text2);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 40px;
+      transition: color var(--transition);
+    }
+
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 28px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font-main);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 28px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font-main);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+      transition: color var(--transition), font-family var(--transition);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text2);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+    .service-card:hover::before { transform: scaleX(1); }
+    [data-theme="tech"] .service-card:hover { box-shadow: 0 16px 40px rgba(79,142,255,0.12); }
+
+    .service-icon { font-size: 2rem; margin-bottom: 18px; }
+
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      transition: color var(--transition), font-family var(--transition);
+    }
+
+    .service-card p { font-size: 0.88rem; color: var(--text2); line-height: 1.65; }
+
+    .service-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-top: 16px;
+      transition: all var(--transition);
+    }
+
+    #process-section {
+      background: var(--bg2);
+      transition: background var(--transition);
+      padding: 80px 0;
+    }
+
+    .process-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 0;
+    }
+
+    .step { padding: 32px 28px; }
+
+    .step-num {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 14px;
+      transition: color var(--transition), font-family var(--transition);
+    }
+    [data-theme="tech"] .step-num { color: #0d1e3a; }
+
+    .step h3 {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      transition: color var(--transition), font-family var(--transition);
+    }
+
+    .step p { font-size: 0.83rem; color: var(--text2); line-height: 1.6; }
+
+    .form-wrapper {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: calc(var(--radius) * 1.5);
+      padding: 48px;
+      max-width: 680px;
+      transition: all var(--transition);
+    }
+    [data-theme="tech"] .form-wrapper { box-shadow: 0 0 60px rgba(79,142,255,0.06); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+
+    .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      color: var(--text);
+      font-family: var(--font-main);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(79,142,255,0.08);
+    }
+    [data-theme="tech"] .form-group input:focus,
+    [data-theme="tech"] .form-group select:focus,
+    [data-theme="tech"] .form-group textarea:focus {
+      box-shadow: 0 0 0 3px rgba(79,142,255,0.2);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 32px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font-main);
+      width: 100%;
+      margin-top: 8px;
+    }
+    .form-submit:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 24px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color var(--transition);
+    }
+    footer .logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text);
+      transition: color var(--transition), font-family var(--transition);
+    }
+    footer p { font-size: 0.8rem; color: var(--text2); }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+      transition: border-color var(--transition);
+    }
+
+    [data-theme="tech"] body {
+      background-image: radial-gradient(ellipse at 60% 20%, rgba(79,142,255,0.04) 0%, transparent 60%),
+                        radial-gradient(ellipse at 20% 80%, rgba(0,212,255,0.03) 0%, transparent 50%);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-cta { display: none; }
+      .hero { padding: 90px 20px 50px; }
+      section { padding: 60px 20px; }
+      .process-inner { padding: 0 20px; }
+      .form-wrapper { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px; }
+      .theme-btn { padding: 6px 10px; font-size: 0.66rem; }
+    }
+  </style>
+</head>
+<body data-theme="professional">
+
+  <nav>
+    <a href="#" class="nav-logo">JMD</a>
+    <div class="nav-right">
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('professional', this)">Professional</button>
+        <button class="theme-btn" onclick="setTheme('tech', this)">Modern Tech</button>
+        <button class="theme-btn" onclick="setTheme('creative', this)">Creative</button>
+      </div>
+      <a href="#contact" class="nav-cta">Get a Quote &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for new projects
+        </div>
+        <h1>I build websites<br>that <span>actually work</span><br>for your business.</h1>
+        <p>Hi, I'm Josh — a web developer crafting clean, fast, and conversion-focused websites. From landing pages to full e-commerce stores, I bring your vision to life.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Start a Project</a>
+          <a href="#services" class="btn-secondary">See What I Do</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What I Offer</div>
+    <h2 class="section-title">Services built for results</h2>
+    <p class="section-sub">Whether you need a simple landing page or a full-featured online store, I've got you covered from design to launch.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Landing Pages</h3>
+        <p>High-converting, focused pages designed to turn visitors into customers. Perfect for campaigns, launches, and lead generation.</p>
+        <span class="service-tag">From scratch or redesign</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Full Websites</h3>
+        <p>Complete multi-page websites — from portfolio sites to business websites — with custom design, mobile responsiveness, and SEO foundations.</p>
+        <span class="service-tag">Portfolio · Business · Blog</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛍️</div>
+        <h3>E-Commerce Stores</h3>
+        <p>Online shops built to sell. Seamless product pages, cart flows, and payment integration so your customers can buy with ease.</p>
+        <span class="service-tag">Shopify · WooCommerce</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Website Refresh</h3>
+        <p>Got an old or outdated site? I'll modernize it — improving speed, design, and user experience without starting from zero.</p>
+        <span class="service-tag">Redesign · Speed boost</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- PROCESS -->
+  <div id="process-section">
+    <div class="process-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Simple 4-step process</h2>
+      <p class="section-sub">No confusion, no endless back-and-forth. Just a clear path from idea to live website.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Discovery Call</h3>
+          <p>We chat about your goals, vision, and what you need. I ask the right questions so nothing gets missed.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Proposal & Quote</h3>
+          <p>You get a clear scope, timeline, and flat-rate price. No surprises, no hidden fees.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Design & Build</h3>
+          <p>I design, build, and share progress with you. You give feedback, I refine until it's perfect.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Launch 🚀</h3>
+          <p>Your site goes live. I handle the technical stuff and make sure everything runs smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Work With Me</div>
+    <h2 class="section-title">Let's build something great</h2>
+    <p class="section-sub">Fill out the form below and I'll get back to you within 24 hours with a free consultation.</p>
+
+    <div class="form-wrapper">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" id="firstName" placeholder="John" />
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" id="lastName" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="john@yourcompany.com" />
+      </div>
+      <div class="form-group">
+        <label>What do you need? *</label>
+        <select id="service">
+          <option value="" disabled selected>Select a service...</option>
+          <option>Landing Page</option>
+          <option>Full Website</option>
+          <option>E-Commerce Store</option>
+          <option>Website Redesign / Refresh</option>
+          <option>Not sure yet — let's talk</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Budget Range</label>
+        <select id="budget">
+          <option value="" disabled selected>Select a budget range...</option>
+          <option>Under $500</option>
+          <option>$500 – $1,500</option>
+          <option>$1,500 – $5,000</option>
+          <option>$5,000+</option>
+          <option>Let's discuss</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell me about your project *</label>
+        <textarea id="message" placeholder="Share some details — what does your business do, what do you want your website to achieve, any inspiration sites you like..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Send My Inquiry &rarr;</button>
+      <div class="success-msg" id="successMsg">
+        ✅ Thanks for reaching out! I'll get back to you within 24 hours.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="logo">JMD</span>
+    <p>&copy; 2026 Josh Manalo Design. All rights reserved.</p>
+    <p style="font-size:0.78rem;color:var(--text2);">Available for freelance work</p>
+  </footer>
+
+  <script>
+    function setTheme(theme, btn) {
+      document.body.setAttribute('data-theme', theme);
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function submitForm() {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!firstName || !lastName || !email || !service || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      document.querySelector('.form-submit').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+
+      setTimeout(() => {
+        document.querySelector('.form-submit').style.display = 'block';
+        document.getElementById('successMsg').style.display = 'none';
+        ['firstName','lastName','email','service','budget','message'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
