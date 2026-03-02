@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JMD — Josh Manalo Design</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body data-theme="professional">
 
@@ -20,14 +21,10 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <div style="max-width:1100px;margin:0 auto;">
     <div class="hero">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Available for new projects
-        </div>
+        <div class="hero-badge"><span class="dot"></span>Available for new projects</div>
         <h1>I build websites<br>that <span>actually work</span><br>for your business.</h1>
         <p>Hi, I'm Josh — a web developer crafting clean, fast, and conversion-focused websites. From landing pages to full e-commerce stores, I bring your vision to life.</p>
         <div class="hero-buttons">
@@ -40,7 +37,6 @@
 
   <hr class="divider"/>
 
-  <!-- SERVICES -->
   <section id="services">
     <div class="section-label">What I Offer</div>
     <h2 class="section-title">Services built for results</h2>
@@ -55,19 +51,19 @@
       <div class="service-card">
         <div class="service-icon">🌐</div>
         <h3>Full Websites</h3>
-        <p>Complete multi-page websites — from portfolio sites to business websites — with custom design, mobile responsiveness, and SEO foundations.</p>
+        <p>Complete multi-page websites with custom design, mobile responsiveness, and SEO foundations.</p>
         <span class="service-tag">Portfolio · Business · Blog</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🛍️</div>
         <h3>E-Commerce Stores</h3>
-        <p>Online shops built to sell. Seamless product pages, cart flows, and payment integration so your customers can buy with ease.</p>
+        <p>Online shops built to sell. Seamless product pages, cart flows, and payment integration.</p>
         <span class="service-tag">Shopify · WooCommerce</span>
       </div>
       <div class="service-card">
         <div class="service-icon">⚡</div>
         <h3>Website Refresh</h3>
-        <p>Got an old or outdated site? I'll modernize it — improving speed, design, and user experience without starting from zero.</p>
+        <p>Got an outdated site? I'll modernize it — improving speed, design, and user experience.</p>
         <span class="service-tag">Redesign · Speed boost</span>
       </div>
     </div>
@@ -75,60 +71,32 @@
 
   <hr class="divider"/>
 
-  <!-- PROCESS -->
   <div id="process-section">
     <div class="process-inner">
       <div class="section-label">How It Works</div>
       <h2 class="section-title">Simple 4-step process</h2>
       <p class="section-sub">No confusion, no endless back-and-forth. Just a clear path from idea to live website.</p>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <h3>Discovery Call</h3>
-          <p>We chat about your goals, vision, and what you need. I ask the right questions so nothing gets missed.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <h3>Proposal & Quote</h3>
-          <p>You get a clear scope, timeline, and flat-rate price. No surprises, no hidden fees.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <h3>Design & Build</h3>
-          <p>I design, build, and share progress with you. You give feedback, I refine until it's perfect.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <h3>Launch 🚀</h3>
-          <p>Your site goes live. I handle the technical stuff and make sure everything runs smoothly.</p>
-        </div>
+        <div class="step"><div class="step-num">01</div><h3>Discovery Call</h3><p>We chat about your goals, vision, and what you need.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Proposal & Quote</h3><p>Clear scope, timeline, and flat-rate price. No surprises.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Design & Build</h3><p>I build and share progress. You give feedback, I refine.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Launch 🚀</h3><p>Your site goes live. I handle the technical stuff.</p></div>
       </div>
     </div>
   </div>
 
   <hr class="divider"/>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="section-label">Work With Me</div>
     <h2 class="section-title">Let's build something great</h2>
-    <p class="section-sub">Fill out the form below and I'll get back to you within 24 hours with a free consultation.</p>
-
+    <p class="section-sub">Fill out the form and I'll get back to you within 24 hours with a free consultation.</p>
     <div class="form-wrapper">
       <div class="form-row">
-        <div class="form-group">
-          <label>First Name *</label>
-          <input type="text" id="firstName" placeholder="John" />
-        </div>
-        <div class="form-group">
-          <label>Last Name *</label>
-          <input type="text" id="lastName" placeholder="Smith" />
-        </div>
+        <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="John"/></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="Smith"/></div>
       </div>
-      <div class="form-group">
-        <label>Email Address *</label>
-        <input type="email" id="email" placeholder="john@yourcompany.com" />
-      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="john@yourcompany.com"/></div>
       <div class="form-group">
         <label>What do you need? *</label>
         <select id="service">
@@ -151,21 +119,16 @@
           <option>Let's discuss</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Tell me about your project *</label>
-        <textarea id="message" placeholder="Share some details — what does your business do, what do you want your website to achieve, any inspiration sites you like..."></textarea>
-      </div>
+      <div class="form-group"><label>Tell me about your project *</label><textarea id="message" placeholder="What does your business do? What do you want your site to achieve?"></textarea></div>
       <button class="form-submit" onclick="submitForm()">Send My Inquiry &rarr;</button>
-      <div class="success-msg" id="successMsg">
-        ✅ Thanks for reaching out! I'll get back to you within 24 hours.
-      </div>
+      <div class="success-msg" id="successMsg">✅ Thanks! I'll get back to you within 24 hours.</div>
     </div>
   </section>
 
   <footer>
     <span class="logo">JMD</span>
     <p>&copy; 2026 Josh Manalo Design. All rights reserved.</p>
-    <p style="font-size:0.78rem;color:var(--text2);">Available for freelance work</p>
+    <p>Available for freelance work</p>
   </footer>
 
   <script>
@@ -174,33 +137,16 @@
       document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }
-
     function submitForm() {
-      const firstName = document.getElementById('firstName').value.trim();
-      const lastName = document.getElementById('lastName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value.trim();
-
-      if (!firstName || !lastName || !email || !service || !message) {
-        alert('Please fill in all required fields.');
-        return;
-      }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-
+      const fields = ['firstName','lastName','email','service','message'];
+      if (fields.some(id => !document.getElementById(id).value.trim())) return alert('Please fill in all required fields.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value)) return alert('Please enter a valid email address.');
       document.querySelector('.form-submit').style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-
       setTimeout(() => {
         document.querySelector('.form-submit').style.display = 'block';
         document.getElementById('successMsg').style.display = 'none';
-        ['firstName','lastName','email','service','budget','message'].forEach(id => {
-          document.getElementById(id).value = '';
-        });
+        [...fields, 'budget'].forEach(id => document.getElementById(id).value = '');
       }, 5000);
     }
   </script>
